@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Price Estimator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('/static/images/bg.jpg'); /* You can replace this with your background image */
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(10px);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .btn-estimate {
+      background-color: #8bc34a;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-estimate:hover {
+      background-color: #7cb342;
+    }
+
+    .price-display {
+      background-color: #ffeb3b;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h1>Price Estimator</h1>
+    <form action="/" method="post">
+      <div class="mb-3">
+        <label for="area" class="form-label">Area (Square Feet)</label>
+        <input type="number" class="form-control" id="area" name="Squareft" placeholder="Enter area in square feet">
+      </div>
+
+      <!-- BHK radio buttons -->
+<div class="mb-3">
+    <label class="form-label">BHK</label>
+    <div class="btn-group d-flex" role="group" aria-label="BHK">
+        <input type="radio" class="btn-check" name="bhk" id="bhk1" value="1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bhk1">1</label>
+
+        <input type="radio" class="btn-check" name="bhk" id="bhk2" value="2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bhk2">2</label>
+
+        <input type="radio" class="btn-check" name="bhk" id="bhk3" value="3" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="bhk3">3</label>
+
+        <input type="radio" class="btn-check" name="bhk" id="bhk4" value="4" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bhk4">4</label>
+
+        <input type="radio" class="btn-check" name="bhk" id="bhk5" value="5" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bhk5">5</label>
+    </div>
+</div>
+
+<!-- Bath radio buttons -->
+<div class="mb-3">
+    <label class="form-label">Bath</label>
+    <div class="btn-group d-flex" role="group" aria-label="Bath">
+        <input type="radio" class="btn-check" name="bath" id="bath1" value="1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bath1">1</label>
+
+        <input type="radio" class="btn-check" name="bath" id="bath2" value="2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bath2">2</label>
+
+        <input type="radio" class="btn-check" name="bath" id="bath3" value="3" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="bath3">3</label>
+
+        <input type="radio" class="btn-check" name="bath" id="bath4" value="4" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bath4">4</label>
+
+        <input type="radio" class="btn-check" name="bath" id="bath5" value="5" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bath5">5</label>
+    </div>
+</div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <select name="location" class="form-select" id="location">
+            <option>1st Block Jayanagar</option>
+            <option>1st Phase JP Nagar</option>
+            <option>2nd Phase Judicial Layout</option>
+            <option>2nd Stage Nagarbhavi</option>
+            <option>5th Block Hbr Layout</option>
+            <option>5th Phase JP Nagar</option>
+            <option>6th Phase JP Nagar</option>
+            <option>7th Phase JP Nagar</option>
+            <option>8th Phase JP Nagar</option>
+            <option>9th Phase JP Nagar</option>
+            <option>AECS Layout</option>
+            <option>Abbigere</option>
+            <option>Akshaya Nagar</option>
+            <option>Ambalipura</option>
+            <option>Ambedkar Nagar</option>
+            <option>Amruthahalli</option>
+            <option>Anandapura</option>
+            <option>Ananth Nagar</option>
+            <option>Anekal</option>
+            <option>Anjanapura</option>
+            <option>Ardendale</option>
+            <option>Arekere</option>
+            <option>Attibele</option>
+            <option>BEML Layout</option>
+            <option>BTM 2nd Stage</option>
+            <option>BTM Layout</option>
+            <option>Babusapalaya</option>
+            <option>Badavala Nagar</option>
+            <option>Balagere</option>
+            <option>Banashankari</option>
+            <option>Banashankari Stage II</option>
+            <option>Banashankari Stage III</option>
+            <option>Banashankari Stage V</option>
+            <option>Banashankari Stage VI</option>
+            <option>Banaswadi</option>
+            <option>Banjara Layout</option>
+            <option>Bannerghatta</option>
+            <option>Bannerghatta Road</option>
+            <option>Basavangudi</option>
+            <option>Basaveshwara Nagar</option>
+            <option>Battarahalli</option>
+            <option>Begur</option>
+            <option>Begur Road</option>
+            <option>Bellandur</option>
+            <option>Benson Town</option>
+            <option>Bharathi Nagar</option>
+            <option>Bhoganhalli</option>
+            <option>Billekahalli</option>
+            <option>Binny Pete</option>
+            <option>Bisuvanahalli</option>
+            <option>Bommanahalli</option>
+            <option>Bommasandra</option>
+            <option>Bommasandra Industrial Area</option>
+            <option>Bommenahalli</option>
+            <option>Brookefield</option>
+            <option>Budigere</option>
+            <option>CV Raman Nagar</option>
+            <option>Chamrajpet</option>
+            <option>Chandapura</option>
+            <option>Channasandra</option>
+            <option>Chikka Tirupathi</option>
+            <option>Chikkabanavar</option>
+            <option>Chikkalasandra</option>
+            <option>Choodasandra</option>
+            <option>Cooke Town</option>
+            <option>Cox Town</option>
+            <option>Cunningham Road</option>
+            <option>Dasanapura</option>
+            <option>Dasarahalli</option>
+            <option>Devanahalli</option>
+            <option>Devarachikkanahalli</option>
+            <option>Dodda Nekkundi</option>
+            <option>Doddaballapur</option>
+            <option>Doddakallasandra</option>
+            <option>Doddathoguru</option>
+            <option>Domlur</option>
+            <option>Dommasandra</option>
+            <option>EPIP Zone</option>
+            <option>Electronic City</option>
+            <option>Electronic City Phase II</option>
+            <option>Electronics City Phase 1</option>
+            <option>Frazer Town</option>
+            <option>GM Palaya</option>
+            <option>Garudachar Palya</option>
+            <option>Giri Nagar</option>
+            <option>Gollarapalya Hosahalli</option>
+            <option>Gottigere</option>
+            <option>Green Glen Layout</option>
+            <option>Gubbalala</option>
+            <option>Gunjur</option>
+            <option>HAL 2nd Stage</option>
+            <option>HBR Layout</option>
+            <option>HRBR Layout</option>
+            <option>HSR Layout</option>
+            <option>Haralur Road</option>
+            <option>Harlur</option>
+            <option>Hebbal</option>
+            <option>Hebbal Kempapura</option>
+            <option>Hegde Nagar</option>
+            <option>Hennur</option>
+            <option>Hennur Road</option>
+            <option>Hoodi</option>
+            <option>Horamavu Agara</option>
+            <option>Horamavu Banaswadi</option>
+            <option>Hormavu</option>
+            <option>Hosa Road</option>
+            <option>Hosakerehalli</option>
+            <option>Hoskote</option>
+            <option>Hosur Road</option>
+            <option>Hulimavu</option>
+            <option>ISRO Layout</option>
+            <option>ITPL</option>
+            <option>Iblur Village</option>
+            <option>Indira Nagar</option>
+            <option>JP Nagar</option>
+            <option>Jakkur</option>
+            <option>Jalahalli</option>
+            <option>Jalahalli East</option>
+            <option>Jigani</option>
+            <option>Judicial Layout</option>
+            <option>KR Puram</option>
+            <option>Kadubeesanahalli</option>
+            <option>Kadugodi</option>
+            <option>Kaggadasapura</option>
+            <option>Kaggalipura</option>
+            <option>Kaikondrahalli</option>
+            <option>Kalena Agrahara</option>
+            <option>Kalyan nagar</option>
+            <option>Kambipura</option>
+            <option>Kammanahalli</option>
+            <option>Kammasandra</option>
+            <option>Kanakapura</option>
+            <option>Kanakpura Road</option>
+            <option>Kannamangala</option>
+            <option>Karuna Nagar</option>
+            <option>Kasavanhalli</option>
+            <option>Kasturi Nagar</option>
+            <option>Kathriguppe</option>
+            <option>Kaval Byrasandra</option>
+            <option>Kenchenahalli</option>
+            <option>Kengeri</option>
+            <option>Kengeri Satellite Town</option>
+            <option>Kereguddadahalli</option>
+            <option>Kodichikkanahalli</option>
+            <option>Kodigehaali</option>
+            <option>Kodigehalli</option>
+            <option>Kodihalli</option>
+            <option>Kogilu</option>
+            <option>Konanakunte</option>
+            <option>Koramangala</option>
+            <option>Kothannur</option>
+            <option>Kothanur</option>
+            <option>Kudlu</option>
+            <option>Kudlu Gate</option>
+            <option>Kumaraswami Layout</option>
+            <option>Kundalahalli</option>
+            <option>LB Shastri Nagar</option>
+            <option>Laggere</option>
+            <option>Lakshminarayana Pura</option>
+            <option>Lingadheeranahalli</option>
+            <option>Magadi Road</option>
+            <option>Mahadevpura</option>
+            <option>Mahalakshmi Layout</option>
+            <option>Mallasandra</option>
+            <option>Malleshpalya</option>
+            <option>Malleshwaram</option>
+            <option>Marathahalli</option>
+            <option>Margondanahalli</option>
+            <option>Marsur</option>
+            <option>Mico Layout</option>
+            <option>Munnekollal</option>
+            <option>Murugeshpalya</option>
+            <option>Mysore Road</option>
+            <option>NGR Layout</option>
+            <option>NRI Layout</option>
+            <option>Nagarbhavi</option>
+            <option>Nagasandra</option>
+            <option>Nagavara</option>
+            <option>Nagavarapalya</option>
+            <option>Narayanapura</option>
+            <option>Neeladri Nagar</option>
+            <option>Nehru Nagar</option>
+            <option>OMBR Layout</option>
+            <option>Old Airport Road</option>
+            <option>Old Madras Road</option>
+            <option>Padmanabhanagar</option>
+            <option>Pai Layout</option>
+            <option>Panathur</option>
+            <option>Parappana Agrahara</option>
+            <option>Pattegarhpalya</option>
+            <option>Poorna Pragna Layout</option>
+            <option>Prithvi Layout</option>
+            <option>R.T. Nagar</option>
+            <option>Raghuvanahalli</option>
+            <option>Rajanukunte</option>
+            <option>Rajarajeshwari Nagar</option>
+            <option>Rajiv Nagar</option>
+            <option>Ramagondanahalli</option>
+            <option>Ramamurthy Nagar</option>
+            <option>Rayasandra</option>
+            <option>Sanjay nagar</option>
+            <option>Sarjapur</option>
+            <option>Sarjapur  Road</option>
+            <option>Sarjapura - Attibele Road</option>
+            <option>Sector 2 HSR Layout</option>
+            <option>Sector 7 HSR Layout</option>
+            <option>Seegehalli</option>
+            <option>Shampura</option>
+            <option>Shivaji Nagar</option>
+            <option>Singasandra</option>
+            <option>Somasundara Palya</option>
+            <option>Sompura</option>
+            <option>Sonnenahalli</option>
+            <option>Subramanyapura</option>
+            <option>Sulikunte</option>
+            <option>TC Palaya</option>
+            <option>Talaghattapura</option>
+            <option>Thanisandra</option>
+            <option>Thigalarapalya</option>
+            <option>Thubarahalli</option>
+            <option>Thyagaraja Nagar</option>
+            <option>Tindlu</option>
+            <option>Tumkur Road</option>
+            <option>Ulsoor</option>
+            <option>Uttarahalli</option>
+            <option>Varthur</option>
+            <option>Vasanthapura</option>
+            <option>Vidhana Soudha Layout</option>
+            <option>Vidyaranyapura</option>
+            <option>Vijaya Bank Layout</option>
+            <option>Vijayanagar</option>
+            <option>Vimanapura</option>
+            <option>Virgonagar</option>
+            <option>Vishveshwarya Layout</option>
+            <option>Vishwapriya Layout</option>
+            <option>Vittasandra</option>
+            <option>Whitefield</option>
+            <option>Yelachenahalli</option>
+            <option>Yelahanka</option>
+            <option>Yelahanka New Town</option>
+            <option>Yelenahalli</option>
+            <option>Yeshwanthpur</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-estimate w-100">Estimate Price</button>
+    </form>
+
+    <div class="price-display">
+        {% if pred != 0 %}
+      <p>
+       {{pred}} Lakh
+      </p>
+      {% endif %}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
